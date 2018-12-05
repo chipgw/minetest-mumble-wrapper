@@ -1,0 +1,8 @@
+[package]
+name = "minetest-mumble-wrapper"
+version = "0.1.0"
+authors = ["David <gw.chip.gw@gmail.com>"]
+
+[dependencies]
+mumble-link = "0.1.0"
+regex = "1.1.0"
