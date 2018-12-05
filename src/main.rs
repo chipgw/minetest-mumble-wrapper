@@ -26,9 +26,9 @@ fn main() {
     // Default command to launch.
     let mut minetest_command = "/usr/bin/minetest".to_owned();
 
-    // Look for an argument containing "minetest" to replace default command.
+    // Look for an argument containing "minetest" to replace default command. (But make sure it isn't this exe because that just leads to crazy recursion...)
     for argument in std::env::args() {
-        if argument.contains("minetest") {
+        if argument.contains("minetest") && !argument.contains("mumble-wrapper") {
             minetest_command = argument
         }
     }
