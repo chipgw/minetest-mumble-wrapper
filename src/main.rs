@@ -73,7 +73,7 @@ fn try_main() -> Result<(), String> {
     let vec_regex = Regex::new(&vec_regex_str).unwrap();
 
     // This regex parses commands like "mumble id playername".
-    let cmd_regex = Regex::new(r"mumble (?P<cmd>submit|id|context) *(?P<arg>[[:alpha:]]*)").unwrap();
+    let cmd_regex = Regex::new(r"mumble (?P<cmd>submit|id|context) *(?P<arg>.*)").unwrap();
 
     let mut player = Position::default();
     let mut camera = Position::default();
