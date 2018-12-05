@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["David <gw.chip.gw@gmail.com>"]
 
 [dependencies]
-mumble-link = "0.1.0"
+mumble-link =  { git = "https://github.com/SpaceManiac/mumble-link-rs" }
 regex = "1.1.0"

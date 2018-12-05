@@ -44,14 +44,14 @@ dependencies = [
 name = "minetest-mumble-wrapper"
 version = "0.1.0"
 dependencies = [
- "mumble-link 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "mumble-link 0.1.0 (git+https://github.com/SpaceManiac/mumble-link-rs)",
  "regex 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "mumble-link"
 version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/SpaceManiac/mumble-link-rs#d5cfa2f88944b6e95bdb2d0fe204750cbc9b115c"
 dependencies = [
  "kernel32-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.44 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -118,7 +118,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum lazy_static 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a374c89b9db55895453a74c1e38861d9deec0b01b405a82516e9d5de4820dea1"
 "checksum libc 0.2.44 (registry+https://github.com/rust-lang/crates.io-index)" = "10923947f84a519a45c8fefb7dd1b3e8c08747993381adee176d7a82b4195311"
 "checksum memchr 2.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "0a3eb002f0535929f1199681417029ebea04aadc0c7a4224b46be99c7f5d6a16"
-"checksum mumble-link 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7a92ff7d87d3ca752fda7a1ccfcde284ea3de84fc8b8a0c43bf434652226bd95"
+"checksum mumble-link 0.1.0 (git+https://github.com/SpaceManiac/mumble-link-rs)" = "<none>"
 "checksum regex 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "37e7cbbd370869ce2e8dff25c7018702d10b21a20ef7135316f8daecd6c25b7f"
 "checksum regex-syntax 0.6.4 (registry+https://github.com/rust-lang/crates.io-index)" = "4e47a2ed29da7a9e1960e1639e7a982e6edc6d49be308a3b02daf511504a16d1"
 "checksum thread_local 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)" = "c6b53e329000edc2b34dbe8545fd20e55a333362d0a321909685a19bd28c3f1b"
