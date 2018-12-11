@@ -5,6 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "target/debug/minetest-mumble-wrapper",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "preLaunchTask": "cargo build",
+            "externalConsole": true
+        },
+        {
+            "name": "Launch (Release)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "target/release/minetest-mumble-wrapper",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "preLaunchTask": "cargo build release",
+            "externalConsole": true
+        },
+        {
             "type": "lldb",
             "request": "launch",
             "name": "Debug executable 'minetest-mumble-wrapper'",
