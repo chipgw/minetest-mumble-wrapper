@@ -19,7 +19,6 @@ fn get_data(captures: &regex::Captures) -> Result<([f32; 3], char, char), String
     ))
 }
 
-
 fn main() {
     match try_main() {
         Ok(_) => {},
@@ -40,8 +39,7 @@ fn try_main() -> Result<(), String> {
     println!("Starting...");
 
     // Hook into Mumble using the very handy crate somebody made.
-    let mut link = MumbleLink::new("Minetest", "Minetest positional audio using a mod and wrapper.")
-        .map_err(|e| { format!("Unable to connect to Mumble. Is it running? ({})", e) })?;
+    let mut link = SharedLink::new("Minetest", "Minetest positional audio using a mod and wrapper.");
 
     println!("Connected to Mumble successfully.");
 

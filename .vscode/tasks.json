@@ -10,7 +10,10 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$rustc"
+            ]
         },
         {
             "label": "cargo build release",
@@ -19,16 +22,10 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-        },
-        {
-            "label": "cargo test",
-            "type": "shell",
-            "command": "cargo test",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$rustc"
+            ]
         }
     ]
 }
