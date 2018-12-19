@@ -5,6 +5,7 @@ use mumble_link::*;
 use regex::Regex;
 use std::io::{BufRead, BufReader, Read, Write};
 use std::process::{Command, Stdio};
+use std::path::PathBuf;
 
 // Function to convert errors to error strings so we can return that as a result.
 fn errstr<T>(e: T) -> String where T: ToString {
@@ -43,21 +44,70 @@ fn try_main() -> Result<(), String> {
 
     println!("Connected to Mumble successfully.");
 
+    // Some default search paths...
+    let mut search_paths = vec!(
+        PathBuf::from("/usr/bin/"),
+        PathBuf::from("/usr/games/"),
+        PathBuf::from("C:/Program Files/minetest/bin/"),
+        PathBuf::from("C:/Program Files (x86)/minetest/bin/"),
+    );
+
+    // Try to add the current dir to search paths.
+    if let Ok(cd) = std::env::current_dir() {
+        search_paths.push(cd);
+    }
+    // Try to add the path of this exe to search paths.
+    if let Ok(ce) = std::env::current_exe() {
+        search_paths.push(ce);
+    }
+
     // Default command to launch.
-    let mut minetest_command = if cfg!(windows) {
-        "C:\\Program Files\\minetest\\bin\\minetest.exe"
-    } else {
-        "/usr/bin/minetest"
-    }.to_owned();
+    let mut minetest_command = std::path::PathBuf::new();
 
     // Look for an argument containing "minetest" to replace default command. (But make sure it isn't this exe because that just leads to crazy recursion...)
     for argument in std::env::args() {
-        if argument.contains("minetest") && !argument.contains("mumble-wrapper") {
-            minetest_command = argument
+        if argument.contains("minetest") && !argument.contains("mumble-wrapper") && std::path::Path::new(&argument).exists() {
+            minetest_command = std::path::PathBuf::from(argument);
         }
     }
 
-    println!("Launching Minetest at {}", minetest_command);
+    // Canonicalize the path because relative paths with Command are undefined.
+    minetest_command = minetest_command.canonicalize().unwrap_or_default();
+
+    if !minetest_command.exists() {
+        // If the program args didn't provide a valid path, try the search paths.
+        for path in search_paths.iter_mut() {
+            // If it doesn't exist, skip it.
+            if !path.exists() {
+                continue;
+            }
+            // If the path is a dir, append the exe name, if it isn't replace the current file name.
+            if path.is_dir() {
+                path.push("minetest");
+            } else {
+                path.set_file_name("minetest");
+            }
+
+            // Add ".exe" only on Windows.
+            #[cfg(windows)]
+            path.set_extension("exe");
+
+            if path.exists() {
+                // We found it!
+                minetest_command = path.clone();
+            }
+        }
+    }
+
+    // Canonicalize the path because relative paths with Command are undefined.
+    minetest_command = minetest_command.canonicalize().unwrap_or_default();
+
+    // Whoops we couldn't find it...
+    if !minetest_command.exists() {
+        return Err("Unable to find Minetest executable! Try passing its path to the command-line...".to_owned());
+    }
+
+    println!("Launching Minetest at {:?}", minetest_command);
 
     let mut child = Command::new(minetest_command)
         .stderr(Stdio::piped()) // We need the output to be piped. For some reason Minetest lua's print function goes to stderr...
