@@ -68,11 +68,15 @@ fn try_main() -> Result<(), String> {
     for argument in std::env::args() {
         if argument.contains("minetest") && !argument.contains("mumble-wrapper") && std::path::Path::new(&argument).exists() {
             minetest_command = std::path::PathBuf::from(argument);
+
+			// Relative paths with Command are undefined.
+            if minetest_command.is_relative() {
+                let mut absolute_path = std::env::current_dir().unwrap();
+                absolute_path.push(minetest_command);
+                minetest_command = absolute_path;
+            }
         }
     }
-
-    // Canonicalize the path because relative paths with Command are undefined.
-    minetest_command = minetest_command.canonicalize().unwrap_or_default();
 
     if !minetest_command.exists() {
         // If the program args didn't provide a valid path, try the search paths.
@@ -98,9 +102,6 @@ fn try_main() -> Result<(), String> {
             }
         }
     }
-
-    // Canonicalize the path because relative paths with Command are undefined.
-    minetest_command = minetest_command.canonicalize().unwrap_or_default();
 
     // Whoops we couldn't find it...
     if !minetest_command.exists() {
