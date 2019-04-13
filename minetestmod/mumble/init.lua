@@ -1,12 +1,11 @@
 local player
 
-minetest.register_on_connect(function()
-    player = minetest.localplayer
-    print("mumble id "..player:get_name())
-    print("mumble context "..minetest.get_server_info().ip..":"..minetest.get_server_info().port)
-end)
-
 minetest.register_globalstep(function(dtime)
+	if minetest.localplayer and not player then
+		player = minetest.localplayer
+		print("mumble id "..player:get_name())
+		print("mumble context "..minetest.get_server_info().ip..":"..minetest.get_server_info().port)
+	end
     if player then
         local player_pos = player:get_pos() or {x=0, y=0, z=0}
         local player_look = {x=0, y=0, z=0}
