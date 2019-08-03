@@ -1,11 +1,13 @@
 local player
+local serverinfo
 
 minetest.register_globalstep(function(dtime)
 	if minetest.localplayer and not player then
 		player = minetest.localplayer
+		serverinfo = minetest.get_server_info()
 		print("mumble id "..player:get_name())
-		print("mumble context "..minetest.get_server_info().ip..":"..minetest.get_server_info().port)
-		minetest.display_chat_message("!Mumble loaded! This mod uses print() to send ingame positional data, your debug.txt may get quite large, and you may want to clear it periodically.")
+		print("mumble context "..serverinfo.ip..":"..serverinfo.port)
+		minetest.display_chat_message("!Mumble loaded! This mod uses print() to send ingame positional data, so your debug.txt may get quite large, and it's recommended to set debug_log_level to nothing if you haven't already.")
 	end
     if player then
         local player_pos = player:get_pos() or {x=0, y=0, z=0}
