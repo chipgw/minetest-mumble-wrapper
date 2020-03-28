@@ -6,7 +6,7 @@ Tutorial: https://www.youtube.com/watch?v=0rk-004yLyk
 For Windows Users: There is a prepackaged zip of minetest that has been configured for use with mumble in Releases, this the easiest way to get set, if you don't mind a fresh install. Also see minetest-mumble-helpers for installing on an existing install if minetest.
 
 Installation Directions:
-Install the csm (/minetestmod/mumble/) or minetest-mumble-CSM.zip in releases.
+Install the Client Side Mod (CSM) (/minetestmod/mumble/) or minetest-mumble-CSM.zip in releases. For more information of how to install Client Side Mods https://wiki.minetest.net/Installing_Client-Side_Mods
 Start mumble, the handler may have an error otherwise. Make sure Positional Audio and Link is enabled in Settings -> Audio Output and Settings -> Plugins. (Both need advanced options to be shown.)
 Run the executable (in the releases) with the minetest program as an argument. (can be done easily with shortcuts in windows, and .sh files in linux)
 It will also search in it's current directory for minetest, as well as /usr/bin/, usr/games/, C:/Program Files/minetest/bin/, and C:/Program Files (x86)/minetest/bin/ so you may not have to pass the path directly as an argument.
