@@ -13,6 +13,7 @@ Start mumble, the handler may have an error otherwise. Make sure Positional Audi
 Run the executable (in the releases) with the minetest program as an argument. (can be done easily with shortcuts in windows, and .sh files in linux)
 It will also search in it's current directory for minetest, as well as /usr/bin/, usr/games/, C:/Program Files/minetest/bin/, and C:/Program Files (x86)/minetest/bin/ so you may not have to pass the path directly as an argument.
 After a few seconds after joining a world the terminal for the handler/minetest should go a bit crazy, outputting your players location and heading. If it dosn't, the csm probably isn't correctly installed, see https://wiki.minetest.net/Installing_Client-Side_Mods
+
 After that Mumble should say in it's chat "Minetest linked" If it dosn't, double check your Mumble settings and make sure Positional Audio is enabled both in Settings -> Audio Output and Settings -> Plugins.
 
 You may want to change the Positional Audio settings in Mumble in Audio Output (needs advanced settings to be visible.)
