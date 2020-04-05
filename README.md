@@ -6,8 +6,36 @@ Tutorial: https://www.youtube.com/watch?v=0rk-004yLyk
 For Windows Users: There is a prepackaged zip of minetest that has been configured for use with mumble in Releases, this the easiest way to get set, if you don't mind a fresh install. Also see minetest-mumble-helpers for installing on an existing install if minetest.
 
 Installation Directions:
-Install the Client Side Mod (CSM) (/minetestmod/mumble/) or minetest-mumble-CSM.zip in releases.
-For more information of how to install Client Side Mods: https://wiki.minetest.net/Installing_Client-Side_Mods
+
+Installation has 3 main components:
+ 1: Minetest Client Side Mod to expose the Coordinates to the Wrapper program.
+ 2: Wrapper program to take the Coordinates from Minetest and send them to Mumble.
+ 3: Mumble to receive the infomarion and attenuate accordingly.
+ 
+All instances of Minetest should be closed to prevent it from rewriting the config and undoing your installation progress.
+ 
+ 1: Minetest Client Side Mod
+  1A: Download the Client Side Mod (henceforth referred to as CSM) from Releases:
+   https://github.com/Elkien3/minetest-mumble-wrapper/releases/download/0.2/minetest-mumble-CSM.zip
+  1B: Extract the zip into your Minetest's "clientmods" folder.
+   The folder tree on Windows or other run-in-place install should be "minetest-v.v.v/clientmods/mumble/init.lua"
+   On Linux or other non run-in-place it should be "/home/[user]/.minetest/clientmods/mumble/init.lua"
+  1C: Edit the mods.conf in the "clientmods" folder and add "load_mod_mumble = true" to the bottom of the file.
+   If there is no mods.conf file in "clientmods" you can create one by adding a text file and renaming it to "mods.conf".
+   Ensure file extensions are enabled in the "View" toolbar, so you will see "New Text Document.txt" instead of just "New Text Document"
+   If Minetest was run since you extracted the CSM, you may see "load_mod_mumble = false" already in mods.conf, in that case just change "load_mod_mumble = false" to "load_mod_mumble = true"
+  1D: Enable Client Side Modding in Minetest Config:
+   For this step you can open Minetest, then go into the Settings tab. Click on "All Settings"
+   There will be a search bar on the top of the list, search for "Client Modding"
+   Locate the "Client Modding" setting, and set it to Enabled.
+   Optional: The CSM writes to the Minetest log all of your player's coordinates and view direction, this can cause your debug.txt to become very large, so it's recommended you stop Minetest from saving logs to file.
+   Search "log level" in all settings, double click the setting, and set it to blank to disable logging text to file.
+  1E: Double check that the CSM is being loaded:
+   With Minetest open, lauch or join any Minetest world or server.
+   Once you launch/join a world, the following message should appear in chat:
+   "!Mumble loaded! This mod uses print() to send ingame positional data, so your debug.txt may get quite large, and it's recommended to set debug_log_level to nothing if you haven't already."
+   If this message does not appear, ensure you have the latest version of the CSM and redo steps 1A-1E.
+ For more information of how to install Client Side Mods: https://wiki.minetest.net/Installing_Client-Side_Mods
 
 Start mumble, the handler may have an error otherwise. Make sure Positional Audio and Link is enabled in Settings -> Audio Output and Settings -> Plugins. (Both need advanced options to be shown.)
 Run the executable (in the releases) with the minetest program as an argument. (can be done easily with shortcuts in windows, and .sh files in linux)
