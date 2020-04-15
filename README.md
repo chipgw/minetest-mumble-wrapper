@@ -54,11 +54,13 @@ minetest-mumble-helpers:
 Note: The helpers are batch files and Windows only.
 This zip file contains two batch files called "autoinstaller.bat"and "autolauncher.bat"
 To use the autoinstaller:
-	1. Download and unzip the minetest-mumble-helpers.zip file into your minetest directory: where the "bin", "clientmods", and "mods" folders are.)
-	2. Unzip the file in place, not creating a new directory. (for 7zip use "Extract Here") Should be something like "Extract to C:\Path\To\minetest-5.0.1-win64\" NOT "Extract to C:\Path\To\minetest-5.0.1-win64\minetest-mumble-helpers\"
-	3. Ensure the files were extracted correctly: all the contents should be visible from the main minetest folder. Also close any Minetest sessions running, as they may interfere with the autoinstaller's config writing.
-	4. Run autoinstaller.bat, Windows may ask you if you want to run it, (perhaps even say that it could be malware) so let it run. (if you wish to see what you are doing by running the autoinstaller, rightclick it and select "edit")
-	The autoinstaller should have moved the files to the correct positions and updated your Minetest settings. This should take care of all minetest related setup for mumble PA if sucessful
+
+1. Download and unzip the minetest-mumble-helpers.zip file into your minetest directory: where the "bin", "clientmods", and "mods" folders are.)
+2. Unzip the file in place, not creating a new directory. (for 7zip use "Extract Here") Should be something like "Extract to C:\Path\To\minetest-5.0.1-win64\" NOT "Extract to C:\Path\To\minetest-5.0.1-win64\minetest-mumble-helpers\"
+3. Ensure the files were extracted correctly: all the contents should be visible from the main minetest folder. Also close any Minetest sessions running, as they may interfere with the autoinstaller's config writing.
+4. Run autoinstaller.bat, Windows may ask you if you want to run it, (perhaps even say that it could be malware) so let it run. (if you wish to see what you are doing by running the autoinstaller, rightclick it and select "edit")
+
+The autoinstaller should have moved the files to the correct positions and updated your Minetest settings. This should take care of all minetest related setup for mumble PA if sucessful
 	If it was unsucessful, install manually.
 	
 To use the autolauncher:
