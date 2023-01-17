@@ -27,7 +27,7 @@ minetest.register_globalstep(function(dtime)
         if minetest.camera then
             camera_pos = minetest.camera:get_pos()
 			--before Minetest 5.2.0 camera positions were 10x player position.
-			if minetestversion <= 520 then
+			if minetestversion and minetestversion <= 520 then
 				camera_pos.x = (camera_pos.x/10)
 				camera_pos.y = (camera_pos.y/10)
 				camera_pos.z = (camera_pos.z/10)
